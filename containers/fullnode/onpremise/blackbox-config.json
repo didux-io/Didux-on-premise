@@ -1,0 +1,60 @@
+{
+    "useWhiteList": false,
+    "server": {
+        "port": 9001,
+        "Hostaddr": "0.0.0.0",
+        "hostName": "http://0.0.0.0",
+        "sslConfig": {
+            "tls": "OFF",
+            "generateKeyStoreIfNotExisted": true,
+            "serverKeyStore": "/opt/didux/data/server-keystore",
+            "serverKeyStorePassword": "didux",
+            "serverTrustStore": "/opt/didux/data/server-truststore",
+            "serverTrustStorePassword": "didux",
+            "serverTrustMode": "TOFU",
+            "knownClientsFile": "/opt/didux/data/knownClients",
+            "clientKeyStore": "/opt/didux/data/client-keystore",
+            "clientKeyStorePassword": "didux",
+            "clientTrustStore": "/opt/didux/data/client-truststore",
+            "clientTrustStorePassword": "didux",
+            "clientTrustMode": "TOFU",
+            "knownServersFile": "/opt/didux/data/knownServers"
+        }
+    },
+    "peer": [
+        {
+            "url": "http://172.20.0.10:9001"
+        },
+        {
+            "url": "http://172.20.0.2:9001"
+        },
+        {
+            "url": "http://172.20.0.3:9001"
+        },
+        {
+            "url": "http://172.20.0.4:9001"
+        },
+        {
+            "url": "http://172.20.0.5:9001"
+        },
+        {
+            "url": "http://172.20.0.6:9001"
+        },
+        {
+            "url": "http://172.20.0.7:9001"
+        }
+    ],
+    "keys": {
+        "passwords": [],
+        "keyData": [
+            {
+                "config": "/opt/didux/data/blackbox.key",
+                "publicKey": "/opt/didux/data/blackbox.pub"
+            }
+        ]
+    },
+    "alwaysSendTo": [],
+    "socket": "/opt/didux/data/blackbox.ipc",
+    "dbfile": "/opt/didux/data/blackbox.db",
+    "peersdbfile": "/opt/didux/data/blackbox-peers.db"
+}

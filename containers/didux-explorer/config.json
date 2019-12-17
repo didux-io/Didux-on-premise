@@ -1,0 +1,40 @@
+{
+    "nodeAddr":     "ws://172.20.0.10",
+    "wsPort":       23000,
+    "startBlock":   0,
+    "endBlock":     "latest",
+    "quiet":        true,
+    "syncAll":      true,
+    "patch":        true,
+    "patchBlocks":  100,
+    "bulkSize":     1000,
+    "settings": {
+        "symbol": "XD",
+        "name": "Didux.io",
+        "title": "Didux Platform Block Explorer",
+        "author": "Daniel, Elkan",
+        "contact": "info@didux.io",
+        "about": "This is the Didux Blockchain Explorer.",
+        "rss": "https://didux.io",
+        "twitter": "https://twitter.com/DiduxVaults",
+        "linkedin": "https://www.linkedin.com/company/didux-io/",
+        "github": "https://github.com/didux-io/",
+        "logo": "/img/didux-logo.png",
+        "copyright": "2019 &copy; Didux.io",
+        "poweredbyCustom": false,
+        "poweredbyEtcImage": "/img/powered-by-etcexplorer-w.png",
+        "poweredbyEtc": false,
+        "tokenList": "tokens.json",
+        "useRichList": true,
+        "useFiat": false,
+        "miners": {
+            "0x32c837d1f0049da4bf733d68a16d5274b655891a": "Didux node 1",
+            "0xa9846d47355005590259f6fdf244564c4777548e": "Didux node 2",
+            "0x576815f2cd4e51fdea9035f98482a7efd1039682": "Didux node 3",
+            "0x30a54a5418bf8131c77c4f49fcf37dd425eb1b1e": "Didux node 4",
+            "0xdb24c015d8fb641bbb534a1ebcedc2d3cb18862b": "Didux node 5",
+            "0xdb6db0f7a1c856f1e67f146bd71376f1916d23e1": "Didux node 6",
+            "0x8a0a3ac9117832405c57ab8e2992d606e39dd574": "Didux node 7"
+        }
+    }
+}

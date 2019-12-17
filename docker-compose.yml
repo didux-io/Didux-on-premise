@@ -1,0 +1,170 @@
+version: '3.7'
+
+networks:
+  didux:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+services:
+  fullnode1:
+    container_name: fullnode1
+    build:
+      context: containers/fullnode/
+    image: didux/fullnode:latest
+    environment:
+      - KEY=1
+    ports:
+      - "9011:9001"
+      - "21001:21000"
+      - "22001:22000"
+      - "23001:23000"
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.10
+  fullnode2:
+    container_name: fullnode2
+    image: didux/fullnode:latest
+    environment:
+      - KEY=2
+    ports:
+      - "9012:9001"
+      - "21002:21000"
+      - "22002:22000"
+      - "23002:23000"
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.2
+  fullnode3:
+    container_name: fullnode3
+    image: didux/fullnode:latest
+    environment:
+      - KEY=3
+    ports:
+      - "9013:9001"
+      - "21003:21000"
+      - "22003:22000"
+      - "23003:23000"
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.3
+  fullnode4:
+    container_name: fullnode4
+    image: didux/fullnode:latest
+    environment:
+      - KEY=4
+    ports:
+      - "9014:9001"
+      - "21004:21000"
+      - "22004:22000"
+      - "23004:23000"
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.4
+  fullnode5:
+    container_name: fullnode5
+    image: didux/fullnode:latest
+    environment:
+      - KEY=5
+    ports:
+      - "9015:9001"
+      - "21005:21000"
+      - "22005:22000"
+      - "23005:23000"
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.5
+  fullnode6:
+    container_name: fullnode6
+    image: didux/fullnode:latest
+    environment:
+      - KEY=6
+    ports:
+      - "9016:9001"
+      - "21006:21000"
+      - "22006:22000"
+      - "23006:23000"
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.6
+  fullnode7:
+    container_name: fullnode7
+    image: didux/fullnode:latest
+    environment:
+      - KEY=7
+    ports:
+      - "9017:9001"
+      - "21007:21000"
+      - "22007:22000"
+      - "23007:23000"
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.7
+
+  ## Explorer
+  mongo:
+    container_name: mongo
+    image: 'mongo'
+    restart: always
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.20
+  app:
+    container_name: app
+    image: diduxio/explorer:latest
+    command: ./app.js
+    restart: always
+    environment:
+      MONGO_URI: 'mongodb://mongo/explorerDB'
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.21
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+    volumes:
+      - "$PWD/containers/didux-explorer/config.json:/app/config.json"
+  sync:
+    container_name: sync
+    image: diduxio/explorer:latest
+    command: ./tools/sync.js
+    restart: always
+    environment:
+      MONGO_URI: 'mongodb://mongo/explorerDB'
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.22
+    links:
+      - mongo
+    volumes:
+      - $PWD/containers/didux-explorer/config.json:/app/config.json
+  stats:
+    container_name: stats
+    image: diduxio/explorer:latest
+    command: ./tools/stats.js
+    restart: always
+    environment:
+      MONGO_URI: 'mongodb://mongo/explorerDB'
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.23
+    links:
+      - mongo
+    volumes:
+      - $PWD/containers/didux-explorer/config.json:/app/config.json
+  richlist:
+    container_name: richlist
+    image: diduxio/explorer:latest
+    command: ./tools/richlist.js
+    restart: always
+    environment:
+      MONGO_URI: 'mongodb://mongo/explorerDB'
+    networks: 
+      didux:
+        ipv4_address: 172.20.0.24
+    links:
+      - mongo
+    volumes:
+      - $PWD/containers/didux-explorer/config.json:/app/config.json
